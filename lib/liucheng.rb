@@ -30,11 +30,15 @@ class Liucheng
     else
       @approved << @states.next
       @undecided.shift
-      if @undecided.empty?
-        @status, @whose_turn = true, nil
-      else
-        @whose_turn = @undecided.first
-      end
+      change_inner_status
+    end
+  end
+
+  def change_inner_status
+    if @undecided.empty?
+      @status, @whose_turn = true, nil
+    else
+      @whose_turn = @undecided.first
     end
   end
 
